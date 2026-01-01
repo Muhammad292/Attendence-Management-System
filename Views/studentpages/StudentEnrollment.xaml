@@ -1,0 +1,199 @@
+﻿<Page x:Class="AttendenceManagementSystem.Views.studentpages.StudentEnrollment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AttendenceManagementSystem.Views.studentpages"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="670"
+      Background="Transparent"    
+      Title="StudentEnrollment">
+
+    <TabControl  Background="Transparent" Margin="10,8,10,8" >
+        <TabItem Header="Details">
+
+            <Grid >
+
+                <!--define rows-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>                    
+                    <ColumnDefinition Width="0.5*"/>                    
+                </Grid.ColumnDefinitions>
+
+                    <!--search filters-->
+
+                <!--search filters-->
+
+                <Border  BorderBrush="#dd2afb" Width="300" Height="38" BorderThickness="2,3,2,4" CornerRadius="6"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                    <TextBox Width="300"  Margin="0,0,0,0"
+                              x:Name = "search_textbox" 
+                              FontSize = "15"
+                              FontWeight = "Normal"
+                              FontFamily = "Montserrat"                            
+                              Foreground = "#160419"
+                              CaretBrush = "Black"
+                              VerticalAlignment="Center"
+              
+                              BorderThickness = "0,0,0,0"
+                              Height = "38"                            
+                              Padding = "2,10,53,10"
+                               TextWrapping="Wrap"
+                              MaxLength="50"
+                              TextChanged="search_textbox_TextChanged"   >
+                        <TextBox.Background >
+                            <ImageBrush ImageSource = "\Images\searchp.png" 
+                      Stretch = "Uniform"
+                      AlignmentX = "Right"  />
+                        </TextBox.Background >
+                    </TextBox>
+
+                </Border>
+
+                <Ellipse x:Name="refresh_btn" Grid.Column="2" Grid.Row="0" 
+                         Height="40" Width="40" MouseDown="refresh_btn_MouseDown">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="\Images\refresh.jpg"/>
+                    </Ellipse.Fill>
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>
+                
+                <!-- combo box for courses and byttom to enrolled and to check to 
+                     enrolled courses-->
+                
+                <!--datagrid-->
+                <Border Grid.Row="1" Grid.Column="0" 
+                        BorderThickness="0" BorderBrush="Transparent"  Grid.ColumnSpan="3">
+
+                    <DataGrid x:Name="Student_Enrollemnt_data_grid"  
+                            AutoGenerateColumns="False"
+                            RowHeaderWidth="0"
+                            VerticalGridLinesBrush="Transparent" 
+                            HorizontalGridLinesBrush="Transparent"
+                            Background="Transparent" 
+                            BorderBrush="Transparent" 
+                            BorderThickness="2"
+                            CanUserResizeColumns="False"
+                            CanUserResizeRows="False"
+                             RowHeight="50"
+                             ColumnHeaderHeight="30"
+                            CanUserDeleteRows="False"
+                            CanUserAddRows="False"
+                            CanUserReorderColumns="False"
+                            IsReadOnly="false"
+                            VerticalAlignment="Stretch"
+                             HorizontalAlignment="Center"
+                            RowStyle="{StaticResource DataGridRowStyle}"
+                            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" 
+                            Margin="8" Width="570" 
+                            VerticalScrollBarVisibility="Auto"
+                              ItemsSource="{Binding CoursesNotEnrolled}">
+
+                    <!--colum definitions-->
+                        <DataGrid.Columns>
+
+                            <!--first-->
+                            <DataGridTextColumn Header="c# Id" IsReadOnly="True" Binding="{Binding CourseId}"   MaxWidth="50" MinWidth="50" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <!--second-->
+                            <DataGridTextColumn Header="Course Name " IsReadOnly="True"   Binding="{Binding Name}"   MaxWidth="120" MinWidth="120" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+
+                            <!--second  (2)-->
+                            <DataGridTextColumn Header="Price " IsReadOnly="True"   Binding="{Binding Price}"   MaxWidth="120" MinWidth="120" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <!--third-->
+                            <DataGridTextColumn Header="Teacher Name" IsReadOnly="True"  Binding="{Binding TeacherName}"   MaxWidth="120" MinWidth="120" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <!--Fourth-->
+                            <DataGridTextColumn Header="limit" IsReadOnly="True" Binding="{Binding TotalStudentLimit}"   MaxWidth="70" MinWidth="70" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <!--Fifth-->
+                            <DataGridTextColumn Header="Std Enroll" IsReadOnly="True"   Binding="{Binding EnrolledStudents}"   MaxWidth="70" MinWidth="70" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Border>
+                <StackPanel Orientation="Horizontal"   Grid.Row="2 " Grid.Column="1"  Margin="0"
+                            HorizontalAlignment="Center"   VerticalAlignment="Center">
+
+                    <Button  x:Name="Enrolled_btn" Content="Enrolled" Margin="15"
+                             Style="{StaticResource Savebtn}" Click="Enrolled_btn_Click" >
+
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+        </TabItem>
+    </TabControl>
+</Page>

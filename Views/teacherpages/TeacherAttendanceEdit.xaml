@@ -1,0 +1,189 @@
+﻿<Page x:Class="AttendenceManagementSystem.Views.teacherpages.TeacherAttendanceEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AttendenceManagementSystem.Views.teacherpages"
+      mc:Ignorable="d" 
+      
+      Background="Transparent"
+      d:DesignHeight="450" d:DesignWidth="670"
+       
+      Title="TeacherAttendanceEdit">
+
+
+    
+
+        <Grid Margin="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5.9*"/>
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+
+                <ColumnDefinition Width="1.5*"/>
+
+            </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top"
+                        HorizontalAlignment="Left" Margin="10,0,0,0" Width="auto">
+
+            <Image x:Name="Back_btn" Source="\Images\backp.jpeg"
+                       Width="30" 
+                       Height="30"
+                       Margin="0,16,0,10" 
+                         MouseDown="Back_btn_MouseDown">
+                <Image.Style>
+                    <Style TargetType="Image">                       
+                   
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                    </Style>
+                </Image.Style>
+                
+            </Image>
+            
+        </StackPanel>
+
+            <!-- Search and Filter Section -->
+
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center"
+                        HorizontalAlignment="Center" Margin="0,0,0,0" Width="auto" >
+
+                <Button x:Name="print_btn" Content="Print"
+                            Style="{StaticResource Savebtn }"  Click="print_btn_Click">
+
+                </Button>
+
+            </StackPanel>
+
+
+
+
+
+
+
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1"
+                                VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" Width="auto">
+
+                <Button x:Name="Update_brn" Content="Update"
+                            Style="{StaticResource Savebtn }" Click="Update_brn_Click" >
+
+                </Button>
+
+
+            </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"
+            HorizontalAlignment="Center" Margin="0,0,0,0" Width="auto" >
+
+            <Button x:Name="delete_btn" Content="Delete All"
+                Style="{StaticResource Savebtn }"  Click="delete_btn_Click">
+
+            </Button>
+
+        </StackPanel>
+
+
+        <DataGrid  x:Name="AttendancedataGridForUpdate" Grid.ColumnSpan="3" Grid.Row="2"
+                          AutoGenerateColumns="False"
+                          RowHeaderWidth="0"
+                          VerticalGridLinesBrush="Transparent" 
+                          HorizontalGridLinesBrush="Transparent"
+                          Background="Transparent" 
+                          BorderBrush="Transparent" 
+                          BorderThickness="2"
+                          CanUserResizeColumns="False"
+                          CanUserResizeRows="False"
+                           RowHeight="50"
+                           ColumnHeaderHeight="30"
+                          CanUserDeleteRows="False"
+                          CanUserAddRows="False"
+                          CanUserReorderColumns="False"
+                          
+                          RowStyle="{StaticResource DataGridRowStyle}"
+                          ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"  Margin="50,20,50,30" Width="auto"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto">
+
+                
+                <DataGrid.Columns >
+
+                <DataGridTextColumn Header="Reg. No."  Binding="{Binding Registraton}" Width="*"  MaxWidth="70"  MinWidth="70" IsReadOnly="True" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Student Name" Binding="{Binding StudentName}" Width="*" MaxWidth="200"  MinWidth="150" IsReadOnly="True">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Date"  Binding="{Binding Date}" Width="*"  MaxWidth="100"  MinWidth="100" IsReadOnly="True" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTemplateColumn Header="Status"  Width="*" MaxWidth="100"  MinWidth="100" IsReadOnly="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="Status_btn_tab3" Content="{Binding Status , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Background="Transparent"
+                                            Width="80" 
+                                            Height="25" 
+                                            Margin="5"
+                                            BorderThickness="0"
+                                            Click="Status_btn_tab3_Click"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn Header="Delete"  MinWidth="100" Width="*" IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="deletebtn"  Content="Delete" 
+                                     Style="{StaticResource DataGridDeletebtn}"
+                                     Click="deletebtn_Click">
+
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+
+            </DataGrid>
+        </Grid>
+
+   
+</Page>

@@ -1,0 +1,31 @@
+﻿<Application x:Class="AttendenceManagementSystem.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AttendenceManagementSystem"
+             StartupUri="Views/loginView.xaml"  >
+
+  
+    
+<!--<Application x:Class="AttendenceManagementSystem.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AttendenceManagementSystem"
+             StartupUri="Views/StudentDashboard.xaml">-->
+<!--<Application x:Class="AttendenceManagementSystem.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AttendenceManagementSystem"
+             StartupUri="SAMPLE.xaml">-->
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="Styles\LoginBtn.xaml"/>-->
+                <ResourceDictionary Source="Styles\LoginStyle.xaml"/>
+                <!--<ResourceDictionary Source="Styles\WindowBtnRD.xaml"/>-->
+                <ResourceDictionary Source="Styles\DashboardStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+         
+    </Application.Resources>
+</Application>
